@@ -10,7 +10,7 @@ metadata:
     io.cilium.k8s.policy.serviceaccount: default
     io.kubernetes.pod.namespace: ocsinventoy
   name: '7532'
-  resourceVersion: '827757'
+  resourceVersion: '828048'
   uid: 5fb12bbf-dfa7-492b-83df-6d7b11cb2ae4
 security-labels:
   k8s:app: ocsinventory
