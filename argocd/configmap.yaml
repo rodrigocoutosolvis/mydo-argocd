@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocsinventory-config
+  labels:
+    app: ocsinventory
+data:
+  DB_SERVER: "ocs-mysql"       # Nome do serviço MySQL
+  MYSQL_DATABASE: "ocs"        # Nome do banco de dados
+  MYSQL_USER: "ocsuser"        # Nome de usuário do banco de dados
+  MYSQL_PASSWORD: "ocs_password"  # Senha do usuário do banco de dados
