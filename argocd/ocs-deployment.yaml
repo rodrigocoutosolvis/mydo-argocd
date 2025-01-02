@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ocsinventory-deployment
+  name: ocsinventory
   labels:
     app: ocsinventory
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ocsinventory
@@ -15,10 +15,16 @@ spec:
         app: ocsinventory
     spec:
       containers:
-      - name: ocsinventory-container
+      - name: ocsinventory
         image: ocsinventory/ocsinventory-docker-image:2.5
         ports:
         - containerPort: 80
-        envFrom:
-        - configMapRef:
-            name: ocsinventory-config
+        env:
+        - name: DB_SERVER
+          value: "ocs-mysql"
+        - name: MYSQL_DATABASE
+          value: "ocs"
+        - name: MYSQL_USER
+          value: "ocsuser"
+        - name: MYSQL_PASSWORD
+          value: "ocs_password"

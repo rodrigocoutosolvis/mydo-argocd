@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocs-mysql
+  labels:
+    app: ocs-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocs-mysql
+  template:
+    metadata:
+      labels:
+        app: ocs-mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "root_password" # Substitua por uma senha forte
+        - name: MYSQL_DATABASE
+          value: "ocs"
+        - name: MYSQL_USER
+          value: "ocsuser"
+        - name: MYSQL_PASSWORD
+          value: "ocs_password"
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-data
+        emptyDir: {} # Para produção, use PersistentVolumes
